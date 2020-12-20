@@ -19,20 +19,23 @@ private val RADIUS = 150f.dp
  * 扇形集合 总和360
  */
 private val ANGLES = floatArrayOf(
-    50f, 90f, 160f, 60f
+    60f, 120f, 100f, 80f
 )
 
 /**
  * 扇形颜色集合
  */
 private val ANGLES_COLORS = intArrayOf(
-    Color.BLUE, Color.GREEN, Color.CYAN, Color.RED
+    Color.parseColor("#3C84F3"),
+    Color.parseColor("#B22E5C"),
+    Color.parseColor("#419388"),
+    Color.parseColor("#F19236"),
 )
 
 /**
  * 选中第x扇形
  */
-private const val FOCUS_ANGEL_INDEX = 1
+private const val FOCUS_ANGEL_INDEX = 2
 
 class PieView @JvmOverloads constructor(
     context: Context,

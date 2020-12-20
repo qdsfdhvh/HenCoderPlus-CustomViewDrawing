@@ -16,18 +16,20 @@ private val RADIUS = 150f.dp
 /**
  * 线段长度
  */
-private val LINE_HEIGHT = 120f.dp
+private val LINE_HEIGHT = 100f.dp
 
 /**
  * 刻度线宽度&长度
  */
 private val DASH_WIDTH = 2f.dp
-private val DASH_LENGTH = 5f.dp
+private val DASH_LENGTH = 10f.dp
 
 /**
  * 分为20个刻度
  */
 private const val DASH_SIZE = 20
+
+private const val DRAW_COLOR = Color.BLACK
 
 /**
  * 绘制仪表盘
@@ -41,7 +43,7 @@ class DashboardView @JvmOverloads constructor(
 
     private val paint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
         // 颜色
-        color = Color.BLUE
+        color = DRAW_COLOR
         // 绘制线条
         style = Paint.Style.STROKE
         // 线条宽度
@@ -49,7 +51,7 @@ class DashboardView @JvmOverloads constructor(
     }
 
     private val dashPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
-        color = Color.RED
+        color = DRAW_COLOR
     }
 
     private val dash = Path().apply {
@@ -86,7 +88,7 @@ class DashboardView @JvmOverloads constructor(
         )
 
         // 第x个刻度
-        val count = 6
+        val count = 5
         // 此刻度的角度
         val lineAngle = (90 + openAngle / 2) + (360 - openAngle) / DASH_SIZE * count
         // 角度转弧度
