@@ -7,7 +7,7 @@ import android.view.View
 import com.hencoder.drawing.R
 import com.hencoder.drawing.utils.dp
 
-private val IMAGE_WIDTH = 200f.dp
+//private val IMAGE_WIDTH = 200f.dp
 private val IMAGE_PADDING = 20f.dp
 
 class AvatarView @JvmOverloads constructor(
@@ -20,24 +20,33 @@ class AvatarView @JvmOverloads constructor(
     private val xfermode = PorterDuffXfermode(PorterDuff.Mode.SRC_IN)
 
     override fun onDraw(canvas: Canvas) {
+        val imageWidth = width
+        val borderSize = 40
+        canvas.drawOval(
+            IMAGE_PADDING - borderSize,
+            IMAGE_PADDING - borderSize,
+            imageWidth - IMAGE_PADDING + borderSize,
+            imageWidth - IMAGE_PADDING + borderSize,
+            paint
+        )
         // 启用离屏缓冲
         val saveCount = canvas.saveLayer(
             IMAGE_PADDING,
             IMAGE_PADDING,
-            IMAGE_PADDING + IMAGE_WIDTH,
-            IMAGE_PADDING + IMAGE_WIDTH,
+            imageWidth - IMAGE_PADDING,
+            imageWidth - IMAGE_PADDING,
             null
         )
         canvas.drawOval(
             IMAGE_PADDING,
             IMAGE_PADDING,
-            IMAGE_PADDING + IMAGE_WIDTH,
-            IMAGE_PADDING + IMAGE_WIDTH,
+            imageWidth - IMAGE_PADDING,
+            imageWidth - IMAGE_PADDING,
             paint
         )
         paint.xfermode = xfermode
         canvas.drawBitmap(
-            getAvatar(IMAGE_WIDTH.toInt()),
+            getAvatar((imageWidth - IMAGE_PADDING * 2).toInt()),
             IMAGE_PADDING,
             IMAGE_PADDING,
             paint
